@@ -3,6 +3,7 @@
 # Content
 1. [Longest Palindrome](#longest-palindrome)
 2. [Is Unique](#is-unique)
+3. [Remove Duplicates](#remove-dups)
 
 # Longest Palindrome
 
@@ -94,3 +95,43 @@ def is_unique(string: str) -> bool:
 
 *[Note No. 1]* Time taken to solve the is unique problem was 0:20 hours\
 *[Note No. 2]* Source of is unique problem was Cracking the Coding Interview by Gayle Laakmann McDowell
+
+# Remove Duplicates
+
+## Problem
+Remove all duplicates from an unsorted linked list.
+
+## Example I/O
+| In | Out |
+| --- | --- |
+| [2] -> [1] -> [2] -> [6] -> [6] | [2] -> [1] -> [6] |
+
+## Algorithm
+1. Make a set
+2. Make current be given linked list node
+3. While current exists
+3. Add current.value to set
+4. If current.next and current.next.value in set, make current.next be current.next.next
+5. Make current be current.next
+6. Repeat from step (3.) as needed
+7. Return linked list
+
+## Pseudo Code
+```python
+def remove_dups(ll_node):
+  value_set = set()
+  current = ll_node
+  while current:
+    value_set.add(current.value)
+    if current.next and current.next.value in value_set:
+      current.next = current.next.next
+    current = current.next
+  return ll_node
+```
+
+## Complexity
+| O | time | space |
+| remove_dups | O(N) | O(N) |
+
+*[Note No. 1]* Time taken to solve the remove duplicates problem was 0:40 hours\
+*[Note No. 2]* Source of longest palindrome problem was Cracking the Coding Interview by Gayle Laakmann McDowell
