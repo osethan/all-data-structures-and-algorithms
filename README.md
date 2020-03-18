@@ -3,7 +3,7 @@
 # Content
 1. [Longest Palindrome](#longest-palindrome)
 2. [Is Unique](#is-unique)
-3. [Remove Duplicates](#remove-dups)
+3. [Remove Duplicates](#remove-duplicates)
 
 # Longest Palindrome
 
