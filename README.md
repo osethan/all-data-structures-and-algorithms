@@ -131,6 +131,7 @@ def remove_dups(ll_node):
 
 ## Complexity
 | O | time | space |
+| --- | --- | --- |
 | remove_dups | O(N) | O(N) |
 
 *[Note No. 1]* Time taken to solve the remove duplicates problem was 0:40 hours\
