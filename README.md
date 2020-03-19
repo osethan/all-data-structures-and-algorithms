@@ -4,6 +4,7 @@
 1. [Longest Palindrome](#longest-palindrome)
 2. [Is Unique](#is-unique)
 3. [Remove Duplicates](#remove-duplicates)
+4. [Stack Min](#stack-min)
 
 # Longest Palindrome
 
@@ -135,4 +136,51 @@ def remove_dups(ll_node):
 | remove_dups | O(N) | O(N) |
 
 *[Note No. 1]* Time taken to solve the remove duplicates problem was 0:40 hours\
-*[Note No. 2]* Source of longest palindrome problem was Cracking the Coding Interview by Gayle Laakmann McDowell
+*[Note No. 2]* Source of remove duplicates problem was Cracking the Coding Interview by Gayle Laakmann McDowell
+
+# Stack Min
+
+## Problem
+How would you design a stack which has a min function? Functions push, pop and min should all have runtime O(1).
+
+## Algorithm
+For every value added to the stack, add another value to a different stack which shows the min at each level of the stack.
+
+## Example I/O
+```
+[5] [1]
+[1] [1]
+[2] [2]
+[6] [4]
+[4] [4]
+```
+
+## Pseudo Code
+```python
+class MinStack(Stack):
+  def __init__(self):
+    super().__init__()
+    self.min_stack = Stack()
+
+  def push(self, value):
+    super().push(value)
+    if self.min_stack.is_empty():
+      self.min_stack.push(value)
+    else:
+      min_val = self.min_stack.peek()
+      if value < min_val:
+        self.min_stack.push(value)
+      else:
+        self.min_stack.push(min_val)
+
+  def pop(self):
+    value = super().pop()
+    self.min_stack.pop()
+    return value
+
+  def min(self):
+    return self.min_stack.peek()
+```
+
+*[Note No. 1]* Time taken to solve the stack min problem was 0:30 hours\
+*[Note No. 2]* Source of stack min problem was Cracking the Coding Interview by Gayle Laakmann McDowell

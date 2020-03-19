@@ -44,7 +44,7 @@ class Stack:
     Add new node with value to top of stack.
     """
 
-    node = _StackNode(value)
+    node = self._StackNode(value)
     node.next = self.top
     self.top = node
 
@@ -104,7 +104,7 @@ class Queue:
     value (): Any data to be the value of a new node.
     """
 
-    node = _QueueNode(value)
+    node = self._QueueNode(value)
     if not self.front:
       self.front = node
       self.rear = node
