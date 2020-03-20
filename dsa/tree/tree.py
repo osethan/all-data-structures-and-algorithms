@@ -30,4 +30,4 @@ class BinarySearchTreeNode(BinaryTreeNode):
     value (): Any data to be the value of the binary search tree node.
     """
 
-    super().__init__()
+    super().__init__(value)
