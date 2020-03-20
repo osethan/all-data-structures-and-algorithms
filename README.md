@@ -5,6 +5,7 @@
 2. [Is Unique](#is-unique)
 3. [Remove Duplicates](#remove-duplicates)
 4. [Stack Min](#stack-min)
+5. [Route Between Nodes](#route-between-nodes)
 
 # Longest Palindrome
 
@@ -184,3 +185,65 @@ class MinStack(Stack):
 
 *[Note No. 1]* Time taken to solve the stack min problem was 0:30 hours\
 *[Note No. 2]* Source of stack min problem was Cracking the Coding Interview by Gayle Laakmann McDowell
+
+# Route Between Nodes
+
+## Problem
+Given a directed graph and two nodes S and E, design an algorithm which finds if there's a path from S to E.
+
+## Example I/O
+```
+In:
+[S] -> [A] <- [B]
+|
+v
+[C] -> [D] -> [E]
+
+Out: True
+```
+
+## Algorithm
+Breadth First Search
+
+1. Add node S to queue
+2. While queue isn't empty
+3. Remove front of queue
+4. If removed front is E, return True
+5. If removed front in set, continue
+6. Add removed front to set
+7. Add removed front's neighbors to queue
+8. After step (2.), return False
+
+## Pseudo Code
+```python
+def route_between_nodes(g, s, e):
+  seen = set()
+  queue = Queue()
+  queue.add(s)
+
+  while not queue.is_empty():
+    node = queue.remove()
+    if node == e:
+      return True
+    if node in seen:
+      continue
+    seen.add(node)
+    for neighbor in node.neighbors:
+      queue.add(neighbor)
+  
+  return False
+```
+
+## Complexity
+| O | time | space |
+| --- | --- | --- |
+| route_between_nodes | O(V + E) | O(V) |
+
+## Tests
+1. S and E not connected, no other paths
+2. S and E not connected, other paths
+3. S and E directly connected
+4. S and E indirectly connected
+
+*[Note No. 1]* Time taken to solve the route between nodes problem was 0:25 hours\
+*[Note No. 2]* Source of route between nodes problem was Cracking the Coding Interview by Gayle Laakmann McDowell
