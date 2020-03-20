@@ -6,6 +6,7 @@
 3. [Remove Duplicates](#remove-duplicates)
 4. [Stack Min](#stack-min)
 5. [Route Between Nodes](#route-between-nodes)
+6. [Minimal Tree](#minimal-tree)
 
 # Longest Palindrome
 
@@ -247,3 +248,68 @@ def route_between_nodes(g, s, e):
 
 *[Note No. 1]* Time taken to solve the route between nodes problem was 0:25 hours\
 *[Note No. 2]* Source of route between nodes problem was Cracking the Coding Interview by Gayle Laakmann McDowell
+
+# Minimal Tree
+
+## Problem
+Given a sorted list of unique integers, write a function which creates a BST with minimum height.
+
+## Example I/O
+```
+In: [1, 2, 3, 4, 5, 6, 7]
+
+Out:
+        [4]
+      /     \
+    [2]      [6]
+  /   \      /  \
+[1]   [3]  [5]  [7]
+```
+
+## Algorithm
+Apply binary search on the sorted list used to make the BST.
+
+1. Find mid of list, make node with value at mid index
+2. Node left is return of recursive call of [0:mid] sublist. If sublist[0] == sublist[mid], no left
+3. Node right is return of recursive call of [mid+1:] sublist. If sublist[-1] == sublist[mid], no right
+4. Return node from step (1.)
+
+## Pseudo Code
+```python
+def minimal_tree(lst):
+  if len(lst) == 0:
+    return None
+
+  mid = len(lst) // 2
+  node = TreeNode(mid)
+
+  left = None
+  if lst[0] == lst[mid]:
+    left = minimal_tree([])
+  else:
+    left = minimal_tree(lst[0:mid])
+
+  right = None
+  if lst[-1] == lst[mid]:
+    right = minimal_tree([])
+  else:
+    right = minimal_tree(lst[mid+1:])
+
+  node.left = left
+  node.right = right
+  return node
+```
+
+## Complexity
+| O | time | space |
+| --- | --- | --- |
+| minimal_tree | O(N) | O(N) |
+
+## Tests
+1. 3 value list, mid has left and right values
+2. 2 value list, mid has left but no right values
+3. 1 value list, mid has no left and no right values
+4. 5 value list, many level BST
+
+*[Note No. 1]* Time taken to solve the minimal tree problem was 0:35 hours\
+*[Note No. 2]* Source of minimal tree problem was Cracking the Coding Interview by Gayle Laakmann McDowell
