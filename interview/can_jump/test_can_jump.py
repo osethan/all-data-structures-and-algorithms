@@ -1,5 +1,5 @@
 import pytest
-from intervew.can_jump.can_jump import can_jump
+from interview.can_jump.can_jump import can_jump
 
 @pytest.mark.parametrize('lst, expected', [
   ([2,3,1,1,4], True),

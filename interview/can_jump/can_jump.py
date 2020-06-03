@@ -8,4 +8,14 @@ def can_jump(nums):
   A = [2,3,1,1,4], return true.
   A = [3,2,1,0,4], return false.
   """
-  pass
+  def jump(nums, pos):
+    if pos == len(nums)-1:
+      return True
+    step = nums[pos]
+    while step > 0:
+      new_pos = pos + step
+      if jump(nums, new_pos):
+        return True
+      step -= 1
+    return False
+  return jump(nums, 0)
